@@ -5,6 +5,8 @@ machine:
 dependencies:
   override:
     - npm install --only=dev
+    - npm install -g ember-cli
+    - npm install -g bower
 
 deployment:
   production:
