@@ -8,14 +8,6 @@ module.exports = function (deployTarget) {
       secretAccessKey: process.env.AWS_SECRET,
       bucket: process.env.AWS_BUCKET,
       region: process.env.AWS_REGION
-    },
-    cloudfront: {
-      accessKeyId: process.env.AWS_KEY,
-      secretAccessKey: process.env.AWS_SECRET,
-      distribution: process.env.AWS_DISTRIBUTION_ID
-    },
-    pipeline: {
-      activateOnDeploy: true
     }
 
     // include other plugin configuration that applies to all deploy targets here
@@ -23,11 +15,22 @@ module.exports = function (deployTarget) {
 
   if (deployTarget === 'staging') {
     ENV.build.environment = 'production'
+    ENV.pipeline = {
+      disabled: {
+        cloudfront: true
+      }
+    }
     // configure other plugins for staging deploy target here
   }
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production'
+    ENV.cloudfront = {
+      accessKeyId: process.env.AWS_KEY,
+      secretAccessKey: process.env.AWS_SECRET,
+      distribution: process.env.AWS_DISTRIBUTION_ID
+    }
+    ENV.pipeline.activateOnDeploy = true
     // configure other plugins for production deploy target here
   }
 
