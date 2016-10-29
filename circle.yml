@@ -4,8 +4,7 @@ machine:
 
 dependencies:
   override:
-    - npm install --dev
-    - bower install
+    - npm install --only=dev
 
 deployment:
   production:
