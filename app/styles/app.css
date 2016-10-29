@@ -2,6 +2,7 @@
 @import "utility.css";
 
 #root {
+  background-color: lightgrey;
 }
 
 .toolbar {

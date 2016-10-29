@@ -5,9 +5,7 @@ module.exports = function (deployTarget) {
     s3: {
       filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,html}',
       accessKeyId: process.env.AWS_KEY,
-      secretAccessKey: process.env.AWS_SECRET,
-      bucket: process.env.AWS_BUCKET,
-      region: process.env.AWS_REGION
+      secretAccessKey: process.env.AWS_SECRET
     }
 
     // include other plugin configuration that applies to all deploy targets here
@@ -15,6 +13,9 @@ module.exports = function (deployTarget) {
 
   if (deployTarget === 'staging') {
     ENV.build.environment = 'production'
+    ENV.s3.bucket = process.env.AWS_BUCKET_STAGING
+    ENV.s3.region = process.env.AWS_REGION_STAGING
+
     ENV.pipeline = {
       disabled: {
         cloudfront: true
@@ -25,6 +26,8 @@ module.exports = function (deployTarget) {
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production'
+    ENV.s3.bucket = process.env.AWS_BUCKET_PROD
+    ENV.s3.region = process.env.AWS_REGION_PROD
     ENV.cloudfront = {
       accessKeyId: process.env.AWS_KEY,
       secretAccessKey: process.env.AWS_SECRET,

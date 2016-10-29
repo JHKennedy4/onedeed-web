@@ -1,0 +1,18 @@
+machine:
+  node:
+    version: 6.9
+
+dependences:
+  override:
+    - npm install
+    - bower install
+
+deployment:
+  production:
+    branch: production
+    commands:
+      - ember deploy production
+  staging:
+    branch: master
+    commands:
+      - ember deploy staging
