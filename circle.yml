@@ -13,8 +13,8 @@ dependencies:
     - "~/.yarn-cache"
   override:
     - yarn install
-    - yarn install -g ember-cli
-    - yarn install -g bower
+    - yarn global add ember-cli
+    - yarn global add bower
     - bower install
 
 test:
