@@ -2,7 +2,7 @@ machine:
   node:
     version: 6.9
 
-dependences:
+dependencies:
   override:
     - npm install
     - bower install
