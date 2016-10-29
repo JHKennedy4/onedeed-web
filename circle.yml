@@ -1,4 +1,6 @@
 machine:
+  pre:
+    - mkdir ~/.yarn-cache
   node:
     version: 6.9
 
