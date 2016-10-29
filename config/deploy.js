@@ -8,7 +8,16 @@ module.exports = function (deployTarget) {
       secretAccessKey: process.env.AWS_SECRET,
       bucket: process.env.AWS_BUCKET,
       region: process.env.AWS_REGION
+    },
+    cloudfront: {
+      accessKeyId: process.env.AWS_KEY,
+      secretAccessKey: process.env.AWS_SECRET,
+      distribution: process.env.AWS_DISTRIBUTION_ID
+    },
+    pipeline: {
+      activateOnDeploy: true
     }
+
     // include other plugin configuration that applies to all deploy targets here
   }
 
